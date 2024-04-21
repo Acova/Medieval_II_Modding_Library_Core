@@ -1,6 +1,18 @@
 {
     "name": "C++",
-    "build": {
-        "dockerfile": "Dockerfile"
+    "service": "medieval-ii-modding-tool",
+    "dockerComposeFile": "../docker-compose.yaml",
+    "workspaceFolder": "/opt/projects/medieval-ii-modding-tool",
+    "overrideCommand": true,
+    "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
+    "customizations": {
+        "settings": {
+            "remote.containers.copyGitConfig": true
+        },
+        "vscode": {
+            "extensions": [
+                "ms-vscode.cpptools-extension-pack"
+            ]
+        }
     }
 }

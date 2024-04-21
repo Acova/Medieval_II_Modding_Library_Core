@@ -1,0 +1,7 @@
+services:
+  medieval-ii-modding-tool:
+    volumes:
+      - ".:/opt/projects/medieval-ii-mod-editor"
+    build:
+      context: .
+      dockerfile: Dockerfile
