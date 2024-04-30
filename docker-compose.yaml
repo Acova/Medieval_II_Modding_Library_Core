@@ -1,7 +1,7 @@
 services:
-  medieval-ii-modding-tool:
+  medieval-ii-modding-library-core:
     volumes:
-      - ".:/opt/projects/medieval-ii-modding-tool"
+      - ".:/opt/projects/medieval-ii-modding-library-core"
     build:
       context: .
       dockerfile: Dockerfile

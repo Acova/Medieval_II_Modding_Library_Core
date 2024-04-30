@@ -1,8 +1,8 @@
 {
     "name": "C++",
-    "service": "medieval-ii-modding-tool",
+    "service": "medieval-ii-modding-library-core",
     "dockerComposeFile": "../docker-compose.yaml",
-    "workspaceFolder": "/opt/projects/medieval-ii-modding-tool",
+    "workspaceFolder": "/opt/projects/medieval-ii-modding-library-core",
     "overrideCommand": true,
     "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
     "customizations": {
