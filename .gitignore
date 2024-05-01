@@ -4,4 +4,4 @@ CMakeFiles
 Makefile
 miimlc
 build/
-lib/MRW/libModReader.a
+src/infrastructure/MRW/libModReader.a
