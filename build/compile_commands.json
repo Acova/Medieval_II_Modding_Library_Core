@@ -1,0 +1,13 @@
+[
+{
+  "directory": "/opt/projects/medieval-ii-modding-library-core/build",
+  "command": "/usr/bin/g++   -I. -I../src/infrastructure/ModRW/public  -g   -std=gnu++17 -o CMakeFiles/miimlc.dir/main.cpp.o -c /opt/projects/medieval-ii-modding-library-core/main.cpp",
+  "file": "/opt/projects/medieval-ii-modding-library-core/main.cpp"
+},
+
+{
+  "directory": "/opt/projects/medieval-ii-modding-library-core/build",
+  "command": "/usr/bin/g++   -I../src/infrastructure/ModRW/public  -g   -std=gnu++17 -o src/infrastructure/ModRW/CMakeFiles/ModReader.dir/private/ModReader.cpp.o -c /opt/projects/medieval-ii-modding-library-core/src/infrastructure/ModRW/private/ModReader.cpp",
+  "file": "/opt/projects/medieval-ii-modding-library-core/src/infrastructure/ModRW/private/ModReader.cpp"
+}
+]
