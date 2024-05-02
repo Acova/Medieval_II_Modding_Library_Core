@@ -1,6 +1,0 @@
-/opt/projects/medieval-ii-modding-library-core/build/CMakeFiles/rebuild_cache.dir
-/opt/projects/medieval-ii-modding-library-core/build/CMakeFiles/edit_cache.dir
-/opt/projects/medieval-ii-modding-library-core/build/CMakeFiles/miimlc.dir
-/opt/projects/medieval-ii-modding-library-core/build/src/infrastructure/ModRW/CMakeFiles/rebuild_cache.dir
-/opt/projects/medieval-ii-modding-library-core/build/src/infrastructure/ModRW/CMakeFiles/edit_cache.dir
-/opt/projects/medieval-ii-modding-library-core/build/src/infrastructure/ModRW/CMakeFiles/ModReader.dir

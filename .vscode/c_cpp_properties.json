@@ -4,7 +4,10 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/src/infrastructure/ModRW/public"
+                "${workspaceFolder}/src/infrastructure/ModRW/public",
+                "${workspaceFolder}/src/infrastructure/ModRW/inc/**",
+                "${workspaceFolder}/src/infrastructure/ModRW/inc/sqlite/**",
+                "${workspaceFolder}/src/infrastructure/ModRW/inc/sqlite"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang",
@@ -15,7 +18,10 @@
             "browse": {
                 "path": [
                     "${workspaceFolder}/**",
-                    "${workspaceFolder}/src/infrastructure/ModRW/public"
+                    "${workspaceFolder}/src/infrastructure/ModRW/public",
+                    "${workspaceFolder}/src/infrastructure/ModRW/inc/**",
+                    "${workspaceFolder}/src/infrastructure/ModRW/inc/sqlite/**",
+                    "${workspaceFolder}/src/infrastructure/ModRW/inc/sqlite"
                 ]
             }
         }
