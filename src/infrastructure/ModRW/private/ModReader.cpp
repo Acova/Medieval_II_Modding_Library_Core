@@ -24,7 +24,7 @@ void IModReader::readFile(std::string filePath)
         return;
     }
 
-    char *sql = "SELECT * FROM file_definition";
+    const char *sql = "SELECT * FROM file_definition";
     const char* data = "Callback function called!";
     char *errorMessage;
     rc = sqlite3_exec(dataBase, sql, callback, (void*)data, &errorMessage);
