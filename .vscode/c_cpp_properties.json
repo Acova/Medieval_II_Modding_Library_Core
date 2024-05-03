@@ -5,6 +5,7 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/src/infrastructure/ModRW/public",
+                "${workspaceFolder}/src/domain/ModRW/public",
                 "${workspaceFolder}/src/infrastructure/ModRW/inc/**",
                 "${workspaceFolder}/src/infrastructure/ModRW/inc/sqlite/**",
                 "${workspaceFolder}/src/infrastructure/ModRW/inc/sqlite"
@@ -19,6 +20,7 @@
                 "path": [
                     "${workspaceFolder}/**",
                     "${workspaceFolder}/src/infrastructure/ModRW/public",
+                    "${workspaceFolder}/src/domain/ModRW/public",
                     "${workspaceFolder}/src/infrastructure/ModRW/inc/**",
                     "${workspaceFolder}/src/infrastructure/ModRW/inc/sqlite/**",
                     "${workspaceFolder}/src/infrastructure/ModRW/inc/sqlite"
