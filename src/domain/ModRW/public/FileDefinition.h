@@ -1,8 +1,12 @@
+#ifndef FileDefinition_H
+#define FileDefinition_H
+
 class FileDefinition {
-    private:
+    public:
         int id;
         char* name;
-
-    public:
-        FileDefinition(int id, char* name);
+        FileDefinition() {};
+        FileDefinition(int fileDefinitionId, char* fileDefinitionName);
 };
+
+#endif

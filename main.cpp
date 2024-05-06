@@ -5,6 +5,6 @@
 int main() {
     std::cout << "Hello World\n";
     std::string filePath = "Hola mundo 2";
-    IModReader::readFile(filePath);
+    ModReader::readFile(filePath);
     return 0;
 }

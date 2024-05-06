@@ -1,10 +1,6 @@
-class FileDefinition
-{
-    int id;
-    char* name;
+#include "FileDefinition.h"
 
-    FileDefinition(int fileDefinitionId, char* fileDefinitionName) {
-        id = fileDefinitionId;
-        name = fileDefinitionName;
-    }
+FileDefinition::FileDefinition(int fileDefinitionId, char* fileDefinitionName) {
+    id = fileDefinitionId;
+    name = fileDefinitionName;
 }

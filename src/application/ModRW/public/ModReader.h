@@ -1,6 +1,6 @@
 #include <string>
 
-class IModReader
+class ModReader
 {
     public:
         static void readFile(std::string filePath);

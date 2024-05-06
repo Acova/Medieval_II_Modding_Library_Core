@@ -4,11 +4,11 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/src/infrastructure/ModRW/public",
+                "${workspaceFolder}/src/infrastructure/DefinitionsLoader/public",
                 "${workspaceFolder}/src/domain/ModRW/public",
-                "${workspaceFolder}/src/infrastructure/ModRW/inc/**",
-                "${workspaceFolder}/src/infrastructure/ModRW/inc/sqlite/**",
-                "${workspaceFolder}/src/infrastructure/ModRW/inc/sqlite"
+                "${workspaceFolder}/src/infrastructure/DefinitionsLoader/inc/**",
+                "${workspaceFolder}/src/infrastructure/DefinitionsLoader/inc/sqlite/**",
+                "${workspaceFolder}/src/infrastructure/DefinitionsLoader/inc/sqlite"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang",
@@ -19,11 +19,11 @@
             "browse": {
                 "path": [
                     "${workspaceFolder}/**",
-                    "${workspaceFolder}/src/infrastructure/ModRW/public",
+                    "${workspaceFolder}/src/infrastructure/DefinitionsLoader/public",
                     "${workspaceFolder}/src/domain/ModRW/public",
-                    "${workspaceFolder}/src/infrastructure/ModRW/inc/**",
-                    "${workspaceFolder}/src/infrastructure/ModRW/inc/sqlite/**",
-                    "${workspaceFolder}/src/infrastructure/ModRW/inc/sqlite"
+                    "${workspaceFolder}/src/infrastructure/DefinitionsLoader/inc/**",
+                    "${workspaceFolder}/src/infrastructure/DefinitionsLoader/inc/sqlite/**",
+                    "${workspaceFolder}/src/infrastructure/DefinitionsLoader/inc/sqlite"
                 ]
             }
         }
