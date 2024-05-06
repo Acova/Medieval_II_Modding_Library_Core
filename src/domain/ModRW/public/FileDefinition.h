@@ -5,8 +5,9 @@ class FileDefinition {
     public:
         int id;
         char* name;
+        char* filePath;
         FileDefinition() {};
-        FileDefinition(int fileDefinitionId, char* fileDefinitionName);
+        FileDefinition(int fileDefinitionId, char* fileDefinitionName, char* filePath);
 };
 
 #endif
