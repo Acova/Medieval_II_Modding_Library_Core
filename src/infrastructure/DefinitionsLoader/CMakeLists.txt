@@ -1,4 +1,5 @@
-# set(THREADS_PREFER_PTHREAD_FLAG ON)
-# find_package(Threads REQUIRED)
-# add_library(sqlite inc/sqlite/sqlite3.c)
-# target_link_libraries(ModReader PRIVATE sqlite Threads::Threads ${CMAKE_DL_LIBS})
+add_library(DefinitionsLoader STATIC private/DefinitionsLoader.cpp)
+target_include_directories(DefinitionsLoader PRIVATE public)
+
+target_link_libraries(DefinitionsLoader PRIVATE sqlite Threads::Threads ${CMAKE_DL_LIBS})
+target_include_directories(DefinitionsLoader PRIVATE inc/sqlite)

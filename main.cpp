@@ -1,10 +1,10 @@
 #include <iostream>
-#include <string>
+#include <vector>
 #include "ModReader.h"
+#include "config.h"
 
 int main() {
     std::cout << "Hello World\n";
-    std::string filePath = "Hola mundo 2";
-    ModReader::readFile(filePath);
+    ModReader* modReader = new ModReader((char*) DEFINITIONS_DATABASE_FILEPATH);
     return 0;
 }
