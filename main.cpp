@@ -1,10 +1,11 @@
 #include <iostream>
+#include <string>
 #include <vector>
 #include "ModReader.h"
 #include "config.h"
 
 int main() {
-    std::cout << "Hello World\n";
-    ModReader* modReader = new ModReader((char*) DEFINITIONS_DATABASE_FILEPATH);
+    std::string filePath = DEFINITIONS_DATABASE_FILEPATH;
+    ModReader* modReader = new ModReader(&filePath);
     return 0;
 }

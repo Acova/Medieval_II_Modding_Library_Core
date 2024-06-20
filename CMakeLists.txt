@@ -5,7 +5,8 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # Variables
-set(DEFINITIONS_DATABASE_FILEPATH "\"/opt/projects/src/infrastructure/DefinitionsLoader/resources/miimlc.db\"")
+set(DEFINITIONS_DATABASE_FILEPATH "\"/opt/projects/medieval-ii-modding-library-core/src/infrastructure/DefinitionsLoader/resources/miimlc.db\"")
+
 
 # External libraries
 set(THREADS_PREFER_PTHREAD_FLAG ON)

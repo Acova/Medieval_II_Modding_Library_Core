@@ -3,6 +3,7 @@
 
 #include "FileDefinition.h"
 #include "DefinitionsLoader.h"
+#include <string>
 #include <vector>
 
 class ModReader
@@ -12,7 +13,7 @@ class ModReader
         std::vector<FileDefinition>* fileDefinitions_;
 
     public:
-        ModReader(char* fileDefinitionsDbPath);
+        ModReader(std::string* fileDefinitionsDbPath);
         void readFile();
 };
 #endif
