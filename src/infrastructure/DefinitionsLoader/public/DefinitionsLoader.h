@@ -16,6 +16,7 @@ class DefinitionsLoader
         DefinitionsLoader(std::string* fileDefinitionsDbPath);
         std::vector<FileDefinition> getFileDefinitions();
         static int loadDefinitions(void* NotUsed, int colNum, char** colNames, char** colValues);
+        static int loadSectionDefinitions(void* NotUsed, int colNum, char** colNames, char** colValues);
         void setFileDefinitions(std::vector<FileDefinition>* fileDefinitions) {
             this->fileDefinitions_.assign(fileDefinitions->begin(), fileDefinitions->end());
         }
