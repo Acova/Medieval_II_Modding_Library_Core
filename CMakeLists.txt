@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # Variables
+# TODO change this shit
 set(DEFINITIONS_DATABASE_FILEPATH "\"/opt/projects/medieval-ii-modding-library-core/src/infrastructure/DefinitionsLoader/resources/miimlc.db\"")
 
 

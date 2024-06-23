@@ -1,6 +1,12 @@
 #include "DefinitionsLoader.h"
 #include <iostream>
-#include <string.h>
+#include <string>
+#include <regex>
+
+std::vector<FileDefinition> DefinitionsLoader::getFileDefinitions()
+{
+    return this->fileDefinitions_;
+}
 
 DefinitionsLoader::DefinitionsLoader(std::string* fileDefinitionsDbPath)
 {
@@ -9,28 +15,12 @@ DefinitionsLoader::DefinitionsLoader(std::string* fileDefinitionsDbPath)
         return;
     }
 
-    std::string sql = "SELECT * FROM file_definition;";
+    std::string sql = "SELECT * FROM file_entry_definition;";
     char* errorMsg;
-    if (SQLITE_OK != sqlite3_exec(this->database_, sql.c_str(), DefinitionsLoader::loadDefinitions, (DefinitionsLoader*) this, &errorMsg)) {
+    if (SQLITE_OK != sqlite3_exec(this->database_, sql.c_str(), DefinitionsLoader::loadEntries, (DefinitionsLoader*) this, &errorMsg)) {
         fprintf(stderr, "Error ejecutando sql: %s\n", errorMsg);
         return;
     }
-
-    for(FileDefinition fileDefinition : this->fileDefinitions_) {
-        std::string newSql = "SELECT "
-            "fsd.id, fsd.name, fsd.beginning_entry, fsd.end_entry " 
-        "FROM "
-        "   file_section_definition fsd "
-        "INNER JOIN file_definition_has_file_section_definition fdhfsd ON "
-        "    fdhfsd.file_definition_id = fsd.id "
-        "WHERE fsd.id = ";
-        newSql = newSql + std::to_string(fileDefinition.id);
-        if (SQLITE_OK != sqlite3_exec(this->database_, newSql.c_str(), DefinitionsLoader::loadSectionDefinitions, (void*) &fileDefinition, &errorMsg)) {
-            fprintf(stderr, "Error ejecutando sql: %s\n", errorMsg);
-            return;
-        }
-    }
-
     sqlite3_close(this->database_);
 
 }
@@ -53,7 +43,7 @@ int DefinitionsLoader::loadSectionDefinitions(void* NotUsed, int colNum, char** 
     return 0;
 }
 
-int DefinitionsLoader::loadDefinitions(void* NotUsed, int colNum, char** colValues, char** colNames)
+int DefinitionsLoader::loadFileDefinitions(void* NotUsed, int colNum, char** colValues, char** colNames)
 {
     int i;
     DefinitionsLoader* obj = (DefinitionsLoader*) NotUsed;
@@ -79,7 +69,37 @@ void DefinitionsLoader::addFileDefinition(FileDefinition fileDefinition) {
     this->fileDefinitions_.push_back(fileDefinition);
 }
 
-std::vector<FileDefinition> DefinitionsLoader::getFileDefinitions()
+
+int DefinitionsLoader::loadEntryDefinitions(void *NotUsed, int colNum, char **colValues, char **colNames)
 {
-    return this->fileDefinitions_;
+    int i;
+    DefinitionsLoader* definitionsLoader = (DefinitionsLoader*) NotUsed;
+    FileEntryDefinition* newFileEntryDefinition = new FileEntryDefinition();
+    for (i = 0; i < colNum; i++) {
+        char* colName = colNames[i];
+        if (strcmp("id", colNames[i]) == 0) {
+            newFileEntryDefinition->id = strtol(colValues[i], NULL, 0);
+        }
+
+        if (strcmp("name", colNames[i]) == 0) {
+            newFileEntryDefinition->name = colValues[i];
+        }
+        
+        if (strcmp("regex", colNames[i]) == 0) {
+            std::string value = colValues[i];
+            newFileEntryDefinition->regularExpression = std::regex(colValues[i]);
+        }
+
+        if (strcmp("match_group", colNames[i]) == 0) {
+            newFileEntryDefinition->matchGroup = strtol(colValues[i], NULL, 0);
+        }
+    }
+
+    definitionsLoader->addFileEntryDefinition(newFileEntryDefinition);
+    return 0;
+}
+
+void DefinitionsLoader::addFileEntryDefinition(FileEntryDefinition *fileEntryDefinition)
+{
+    this->fileEntries_[fileEntryDefinition->id] = fileEntryDefinition;
 }
