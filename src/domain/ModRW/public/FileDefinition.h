@@ -2,6 +2,7 @@
 #define FileDefinition_H
 
 #include "FileSectionDefinition.h"
+#include "FileEntryDefinition.h"
 #include <vector>
 #include <string.h>
 
@@ -10,16 +11,20 @@ class FileDefinition {
         int id;
         std::string name;
         std::string filePath;
-        std::vector<FileSectionDefinition> fileSectionDefinitions;
+        std::vector<FileSectionDefinition*> sections;
+        std::vector<FileEntryDefinition*> entries;
         FileDefinition() {};
         FileDefinition(int fileDefinitionId, std::string fileDefinitionName, std::string fileDefinitionPath) {
             id = fileDefinitionId;
             name = fileDefinitionName;
             filePath = fileDefinitionPath;
         };
-        void AddFileSectionDefinition(FileSectionDefinition fileSectionDefinition) {
-            fileSectionDefinitions.push_back(fileSectionDefinition);
+        void addFileSection(FileSectionDefinition* fileSectionDefinition) {
+            sections.push_back(fileSectionDefinition);
         };
+        void addEntry(FileEntryDefinition* fileEntryDefinition) {
+            entries.push_back(fileEntryDefinition);
+        }
 };
 
 #endif
