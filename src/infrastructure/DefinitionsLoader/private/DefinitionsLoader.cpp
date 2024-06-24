@@ -17,33 +17,23 @@ DefinitionsLoader::DefinitionsLoader(std::string* fileDefinitionsDbPath)
 
     std::string sql = "SELECT * FROM file_entry_definition;";
     char* errorMsg;
-    if (SQLITE_OK != sqlite3_exec(this->database_, sql.c_str(), DefinitionsLoader::loadEntries, (DefinitionsLoader*) this, &errorMsg)) {
+    if (SQLITE_OK != sqlite3_exec(this->database_, sql.c_str(), DefinitionsLoader::loadEntryDefinition, (DefinitionsLoader*) this, &errorMsg)) {
         fprintf(stderr, "Error ejecutando sql: %s\n", errorMsg);
         return;
     }
+
+    sql = "SELECT * FROM file_section_definition";
+    if (SQLITE_OK != sqlite3_exec(this->database_, sql.c_str(), DefinitionsLoader::loadSectionDefinition, (DefinitionsLoader*) this, &errorMsg)) {
+        fprintf(stderr, "Error ejecutando sql: %s\n", errorMsg);
+        return;
+    }
+
+    sql = "SELECT * FROM file_section_definition_has_item";
     sqlite3_close(this->database_);
 
 }
 
-int DefinitionsLoader::loadSectionDefinitions(void* NotUsed, int colNum, char** colValues, char** colNames)
-{
-    int i;
-    FileDefinition* fileDefinition = (FileDefinition*) NotUsed;
-    FileSectionDefinition* newFileSectionDefinition = new FileSectionDefinition();
-    for (i = 0; i < colNum; i++) {
-        printf("%s = %s\n", colNames[i], colValues[i]);
-        if (strcmp("id", colNames[i]) == 0) {
-            newFileSectionDefinition->id = strtol(colValues[i], NULL, 0);
-        }
-        if (strcmp("name", colNames[i]) == 0) {
-            newFileSectionDefinition->name = colValues[i];
-        }
-    }
-    fileDefinition->AddFileSectionDefinition(*newFileSectionDefinition);
-    return 0;
-}
-
-int DefinitionsLoader::loadFileDefinitions(void* NotUsed, int colNum, char** colValues, char** colNames)
+int DefinitionsLoader::loadFileDefinition(void* NotUsed, int colNum, char** colValues, char** colNames)
 {
     int i;
     DefinitionsLoader* obj = (DefinitionsLoader*) NotUsed;
@@ -69,8 +59,46 @@ void DefinitionsLoader::addFileDefinition(FileDefinition fileDefinition) {
     this->fileDefinitions_.push_back(fileDefinition);
 }
 
+int DefinitionsLoader::loadSectionDefinition(void* NotUsed, int colNum, char** colValues, char** colNames)
+{
+    int i;
+    DefinitionsLoader* definitionsLoader = (DefinitionsLoader*) NotUsed;
+    FileSectionDefinition* newFileSectionDefinition = new FileSectionDefinition();
+    for (i = 0; i < colNum; i++) {
+        if (strcmp("id", colNames[i]) == 0) {
+            newFileSectionDefinition->id = strtol(colValues[i], NULL, 0);
+        }
 
-int DefinitionsLoader::loadEntryDefinitions(void *NotUsed, int colNum, char **colValues, char **colNames)
+        if (strcmp("name", colNames[i]) == 0) {
+            newFileSectionDefinition->name = colValues[i];
+        }
+
+        if (strcmp("beginning_entry", colNames[i]) == 0) {
+            int entryId = strtol(colValues[i], NULL, 0);
+            newFileSectionDefinition->beginningEntry = definitionsLoader->fileEntries_[entryId];
+        }
+
+        if (strcmp("end_entry", colNames[i]) == 0) {
+            int entryId = strtol(colValues[i], NULL, 0);
+            newFileSectionDefinition->endEntry = definitionsLoader->fileEntries_[entryId];
+        }
+    }
+
+    definitionsLoader->addFileSectionDefinition(newFileSectionDefinition);
+    return 0;
+}
+
+int DefinitionsLoader::loadSectionDefinitionRelation(void *NotUsed, int colNum, char **colValues, char **colNames)
+{
+    return 0;
+}
+
+void DefinitionsLoader::addFileSectionDefinition(FileSectionDefinition *fileSectionDefinition)
+{
+    this->fileSections_[fileSectionDefinition->id] = fileSectionDefinition;
+}
+
+int DefinitionsLoader::loadEntryDefinition(void *NotUsed, int colNum, char **colValues, char **colNames)
 {
     int i;
     DefinitionsLoader* definitionsLoader = (DefinitionsLoader*) NotUsed;
