@@ -29,6 +29,10 @@ DefinitionsLoader::DefinitionsLoader(std::string* fileDefinitionsDbPath)
     }
 
     sql = "SELECT * FROM file_section_definition_has_item";
+    if (SQLITE_OK != sqlite3_exec(this->database_, sql.c_str(), DefinitionsLoader::loadSectionDefinitionRelation, (DefinitionsLoader*) this, &errorMsg)) {
+        fprintf(stderr, "Error ejecutando sql: %s\n", errorMsg);
+        return;
+    }
     sqlite3_close(this->database_);
 
 }
@@ -90,6 +94,36 @@ int DefinitionsLoader::loadSectionDefinition(void* NotUsed, int colNum, char** c
 
 int DefinitionsLoader::loadSectionDefinitionRelation(void *NotUsed, int colNum, char **colValues, char **colNames)
 {
+    int i;
+    DefinitionsLoader* definitionsLoader = (DefinitionsLoader*) NotUsed;
+    FileSectionDefinition* fileSectionDefinition;
+    std::string itemClass;
+    int itemId;
+    for (i = 0; i < colNum; i++){
+        if (strcmp("file_section_definition_id", colNames[i]) == 0) {
+            int fileSectionId = strtol(colValues[i], NULL, 0);
+            fileSectionDefinition = definitionsLoader->fileSections_[fileSectionId];
+        }
+
+        if (strcmp("item_class", colNames[i]) == 0) {
+            itemClass = colValues[i];
+        }
+
+        if (strcmp("item_id", colNames[i]) == 0) {
+            itemId = strtol(colValues[i], NULL, 0);
+        }
+    }
+
+    if (strcmp("Entry", itemClass.c_str()) == 0) {
+        FileEntryDefinition* entry = definitionsLoader->fileEntries_[itemId];
+        fileSectionDefinition->addEntry(entry);
+    } else if (strcmp("Section", itemClass.c_str()) == 0)
+    {
+        FileSectionDefinition* section = definitionsLoader->fileSections_[itemId];
+        fileSectionDefinition->addSection(section);
+    }
+    
+
     return 0;
 }
 
