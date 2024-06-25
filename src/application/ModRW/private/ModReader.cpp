@@ -1,7 +1,7 @@
 #include "ModReader.h"
 #include <iostream>
 
-ModReader::ModReader(std::string* fileDefinitionsDbPath) 
+ModReader::ModReader(std::string fileDefinitionsDbPath) 
 {
     this->definitionsLoader_ = new DefinitionsLoader(fileDefinitionsDbPath);
 }

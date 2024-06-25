@@ -4,10 +4,6 @@ project(miimlc VERSION 0.1)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-# Variables
-# TODO change this shit
-set(DEFINITIONS_DATABASE_FILEPATH "\"/opt/projects/medieval-ii-modding-library-core/src/infrastructure/DefinitionsLoader/resources/miimlc.db\"")
-
 
 # External libraries
 set(THREADS_PREFER_PTHREAD_FLAG ON)
@@ -18,7 +14,6 @@ include_directories(BEFORE inc/sqlite src/domain/ModRW/public src/infrastructure
 add_executable(miimlc main.cpp)
 add_subdirectory(src/)
 target_link_libraries(miimlc PRIVATE ModReader)
-configure_file(config.h.in ${PROJECT_BINARY_DIR}/generated/config.h)
 target_include_directories(miimlc 
     PUBLIC "${PROJECT_BINARY_DIR}" src/application/ModRW/public ${PROJECT_BINARY_DIR}/generated/
 )

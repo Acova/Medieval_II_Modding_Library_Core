@@ -13,7 +13,7 @@ class ModReader
         std::vector<FileDefinition>* fileDefinitions_;
 
     public:
-        ModReader(std::string* fileDefinitionsDbPath);
+        ModReader(std::string fileDefinitionsDbPath);
         void readFile();
 };
 #endif

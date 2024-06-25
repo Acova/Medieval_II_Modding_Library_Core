@@ -3,9 +3,9 @@
 #include <string>
 #include <regex>
 
-DefinitionsLoader::DefinitionsLoader(std::string* fileDefinitionsDbPath)
+DefinitionsLoader::DefinitionsLoader(std::string fileDefinitionsDbPath)
 {
-    if (SQLITE_OK != sqlite3_open(fileDefinitionsDbPath->c_str(), &this->database_)) {
+    if (SQLITE_OK != sqlite3_open(fileDefinitionsDbPath.c_str(), &this->database_)) {
         fprintf(stderr, "Error abriendo la base de datos");
         return;
     }

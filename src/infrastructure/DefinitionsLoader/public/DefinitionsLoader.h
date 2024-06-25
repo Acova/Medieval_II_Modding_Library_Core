@@ -16,7 +16,7 @@ class DefinitionsLoader
         std::map<int, FileSectionDefinition*> fileSections_;
 
     public:
-        DefinitionsLoader(std::string* fileDefinitionsDbPath);
+        DefinitionsLoader(std::string fileDefinitionsDbPath);
         std::map<int, FileDefinition*> getFileDefinitions() {
             return this->fileDefinitions_;
         };
