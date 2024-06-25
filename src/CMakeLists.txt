@@ -5,3 +5,8 @@ add_subdirectory(infrastructure/DefinitionsLoader/)
 
 target_link_libraries(ModReader PRIVATE DefinitionsLoader)
 target_include_directories(ModReader PRIVATE infrastructure/DefinitionsLoader/public)
+
+add_subdirectory(infrastructure/TxtRepository)
+
+target_link_libraries(ModReader PRIVATE BuildingRepository)
+target_include_directories(ModReader PRIVATE infrastructure/TxtRepository/public)

@@ -7,7 +7,7 @@
 class Building {
     public:
         std::string buildingName;
-        Building convertTo;
+        Building* convertTo;
         std::string religion;
 
 };

@@ -1,0 +1,2 @@
+add_library(BuildingRepository STATIC private/BuildingRepository.cpp)
+target_include_directories(BuildingRepository PRIVATE public)
