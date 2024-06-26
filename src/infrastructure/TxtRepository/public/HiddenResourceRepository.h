@@ -2,11 +2,11 @@
 #define HIDDENRESOURCESREPOSITORY
 
 #include "Buildings/HiddenResource.h"
-#include "IRepository.h"
+#include "Buildings/IHiddenResourceRepository.h"
 
 #include <vector>
 
-class HiddenResourceRepository : public IRepository<HiddenResource*> {
+class HiddenResourceRepository : public IHiddenResourceRepository {
     private:
         std::vector<HiddenResource*> hiddenResources;
 

@@ -2,11 +2,11 @@
 #define BUILDINGLEVELREPOSITORY
 
 #include "Buildings/BuildingLevel.h"
-#include "IRepository.h"
+#include "Buildings/IBuildingLevelRepository.h"
 
 #include <vector>
 
-class BuildingLevelRepository : public IRepository<BuildingLevel*> {
+class BuildingLevelRepository : public IBuildingLevelRepository {
     private:
         std::vector<BuildingLevel*> buildingLevels;
 

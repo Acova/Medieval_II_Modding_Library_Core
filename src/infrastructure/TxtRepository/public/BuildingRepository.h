@@ -2,11 +2,11 @@
 #define BUILDINGREPOSITORY
 
 #include "Buildings/Building.h"
-#include "IRepository.h"
+#include "Buildings/IBuildingRepository.h"
 
 #include <vector>
 
-class BuildingRepository : public IRepository<Building*> {
+class BuildingRepository : public IBuildingRepository {
     private:
         std::vector<Building*> buildings;
 
