@@ -7,7 +7,7 @@
 #include <vector>
 
 class BuildingRepository : public IRepository<Building*> {
-    public:
+    private:
         std::vector<Building*> buildings;
 
     public:

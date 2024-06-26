@@ -6,9 +6,10 @@
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/src/infrastructure/DefinitionsLoader/public",
                 "${workspaceFolder}/src/domain/ModRW/public",
-                "${workspaceFolder}/src/infrastructure/DefinitionsLoader/inc/**",
-                "${workspaceFolder}/src/infrastructure/DefinitionsLoader/inc/sqlite/**",
-                "${workspaceFolder}/src/infrastructure/DefinitionsLoader/inc/sqlite"
+                "${workspaceFolder}/inc/**",
+                "${workspaceFolder}/inc/sqlite/**",
+                "${workspaceFolder}/inc/sqlite",
+                "${workspaceFolder}/src/application/ModRW/public"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang",

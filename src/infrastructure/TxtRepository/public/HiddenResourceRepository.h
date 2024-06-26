@@ -7,7 +7,7 @@
 #include <vector>
 
 class HiddenResourceRepository : public IRepository<HiddenResource*> {
-    public:
+    private:
         std::vector<HiddenResource*> hiddenResources;
 
     public:
