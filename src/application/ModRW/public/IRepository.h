@@ -6,8 +6,8 @@
 template<class T>
 class IRepository {
     public:
-        virtual std::vector<T> getAll();
-        virtual bool save(T entity);
+        virtual std::vector<T> getAll() = 0;
+        virtual bool save(T entity) = 0;
 };
 
 #endif

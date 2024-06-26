@@ -1,2 +1,5 @@
 add_library(BuildingRepository STATIC private/BuildingRepository.cpp)
 target_include_directories(BuildingRepository PRIVATE public)
+
+add_library(HiddenResourceRepository STATIC private/HiddenResourceRepository.cpp)
+target_include_directories(HiddenResourceRepository PRIVATE public)

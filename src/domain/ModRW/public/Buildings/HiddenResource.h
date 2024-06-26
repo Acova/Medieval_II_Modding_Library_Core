@@ -1,12 +1,11 @@
 #ifndef HIDDENRESOURCES
 #define HIDDENRESOURCES
 
-#include <vector>
 #include <string>
 
-class HiddenResources {
+class HiddenResource {
     public:
-        std::vector<std::string> resources;
+        std::string resource;
 };
 
 #endif
