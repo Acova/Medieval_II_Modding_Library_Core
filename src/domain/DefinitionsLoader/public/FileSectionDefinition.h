@@ -13,6 +13,7 @@ class FileSectionDefinition {
         FileEntryDefinition* endEntry;
         std::vector<FileEntryDefinition*> entries;
         std::vector<FileSectionDefinition*> sections;
+        FileSectionDefinition* parentSection;
         FileSectionDefinition() {};
         FileSectionDefinition(
             int sectionDefinitionId,

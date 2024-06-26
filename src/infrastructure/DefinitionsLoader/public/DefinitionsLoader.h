@@ -29,7 +29,8 @@ class DefinitionsLoader
         };
         static int loadEntryDefinition(void *NotUsed, int colNum, char **colValues, char **colNames);
         static int loadSectionDefinition(void *NotUsed, int colNum, char **colValues, char **colNames);
-        static int loadSectionDefinitionRelation(void *NotUsed, int colNum, char **colValues, char **colNames);
+        static int loadSectionDefinitionEntryRelation(void *NotUsed, int colNum, char **colValues, char **colNames);
+        static int loadChildSectionDefinitionRelation(void *NotUsed, int colNum, char **colValues, char **colNames);
         static int loadFileDefinition(void *NotUsed, int colNum, char **colValues, char **colNames);
         static int loadFileDefinitionRelation(void *NotUsed, int colNum, char **colValues, char **colNames);
         void addFileDefinition(FileDefinition* fileDefinition) {

@@ -12,7 +12,6 @@ class FileDefinition {
         std::string name;
         std::string filePath;
         std::vector<FileSectionDefinition*> sections;
-        std::vector<FileEntryDefinition*> entries;
         FileDefinition() {};
         FileDefinition(int fileDefinitionId, std::string fileDefinitionName, std::string fileDefinitionPath) {
             id = fileDefinitionId;
@@ -22,9 +21,6 @@ class FileDefinition {
         void addFileSection(FileSectionDefinition* fileSectionDefinition) {
             sections.push_back(fileSectionDefinition);
         };
-        void addEntry(FileEntryDefinition* fileEntryDefinition) {
-            entries.push_back(fileEntryDefinition);
-        }
 };
 
 #endif

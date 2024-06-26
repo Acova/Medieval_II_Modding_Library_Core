@@ -24,7 +24,13 @@ DefinitionsLoader::DefinitionsLoader(std::string fileDefinitionsDbPath)
     }
 
     sql = "SELECT * FROM file_section_definition_has_file_entry_definition";
-    if (SQLITE_OK != sqlite3_exec(this->database_, sql.c_str(), DefinitionsLoader::loadSectionDefinitionRelation, (DefinitionsLoader*) this, &errorMsg)) {
+    if (SQLITE_OK != sqlite3_exec(this->database_, sql.c_str(), DefinitionsLoader::loadSectionDefinitionEntryRelation, (DefinitionsLoader*) this, &errorMsg)) {
+        fprintf(stderr, "Error ejecutando sql: %s\n", errorMsg);
+        return;
+    }
+
+    sql = "SELECT * FROM file_section_definition_has_file_section_definition";
+    if (SQLITE_OK != sqlite3_exec(this->database_, sql.c_str(), DefinitionsLoader::loadChildSectionDefinitionRelation, (DefinitionsLoader*) this, &errorMsg)) {
         fprintf(stderr, "Error ejecutando sql: %s\n", errorMsg);
         return;
     }
@@ -103,7 +109,7 @@ int DefinitionsLoader::loadSectionDefinition(void* NotUsed, int colNum, char** c
     return 0;
 }
 
-int DefinitionsLoader::loadSectionDefinitionRelation(void *NotUsed, int colNum, char **colValues, char **colNames)
+int DefinitionsLoader::loadSectionDefinitionEntryRelation(void *NotUsed, int colNum, char **colValues, char **colNames)
 {
     int i;
     DefinitionsLoader* definitionsLoader = (DefinitionsLoader*) NotUsed;
@@ -123,6 +129,30 @@ int DefinitionsLoader::loadSectionDefinitionRelation(void *NotUsed, int colNum, 
     FileEntryDefinition* entry = definitionsLoader->fileEntries_[fileEntryDefinitionId];
     fileSectionDefinition->addEntry(entry);
     
+    return 0;
+}
+
+int DefinitionsLoader::loadChildSectionDefinitionRelation(void *NotUsed, int colNum, char **colValues, char **colNames)
+{
+    int i;
+    DefinitionsLoader* definitionsLoader = (DefinitionsLoader*) NotUsed;
+    FileSectionDefinition* parentFileSectionDefinition;
+    FileSectionDefinition* childFileSectionDefinition;
+    for (i = 0; i < colNum; i++){
+        if (strcmp("parent_file_section_id", colNames[i]) == 0) {
+            int parentFileSectionId = strtol(colValues[i], NULL, 0);
+            parentFileSectionDefinition = definitionsLoader->fileSections_[parentFileSectionId];
+        }
+
+        if (strcmp("child_file_section_id", colNames[i]) == 0) {
+            int childFileSectionId = strtol(colValues[i], NULL, 0);
+            childFileSectionDefinition = definitionsLoader->fileSections_[childFileSectionId];
+        }
+    }
+
+    parentFileSectionDefinition->addSection(childFileSectionDefinition);
+    childFileSectionDefinition->addSection(parentFileSectionDefinition);
+
     return 0;
 }
 
