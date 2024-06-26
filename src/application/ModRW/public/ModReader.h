@@ -17,7 +17,7 @@ class ModReader
         std::map<std::string, IFileParser*> fileParsers;
 
     public:
-        ModReader(std::string fileDefinitionsDbPath);
+        ModReader(std::string fileDefinitionsDbPath, std::string modFolderPath);
         void readFile();
 };
 #endif

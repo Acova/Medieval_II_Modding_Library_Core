@@ -3,11 +3,13 @@
 #include "Buildings/IHiddenResourceRepository.h"
 #include "BuildingRepository.h"
 #include "BuildingLevelRepository.h"
-#include "HiddenResourceRepository.h"
 #include "ExportDescrBuildingsFileParser.h"
+#include "HiddenResourceRepository.h"
 #include "ModReader.h"
 
-ModReader::ModReader(std::string fileDefinitionsDbPath) 
+#include <iostream>
+
+ModReader::ModReader(std::string fileDefinitionsDbPath, std::string modFolderPath) 
 {
     this->definitionsLoader_ = new DefinitionsLoader(fileDefinitionsDbPath);
     IBuildingRepository* buildingRepository = new BuildingRepository();
@@ -18,6 +20,10 @@ ModReader::ModReader(std::string fileDefinitionsDbPath)
         buildingLevelRepository, 
         hiddenResourceRepository
     );
+    for(auto const& [id, fileDefinition] : this->definitionsLoader_->getFileDefinitions()) {
+        IFileParser* fileParser = this->fileParsers[fileDefinition->name];
+        fileParser->parseFile(modFolderPath + fileDefinition->filePath);
+    }
 }
 
 void ModReader::readFile()

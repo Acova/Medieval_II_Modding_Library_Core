@@ -7,6 +7,8 @@
 #include "FileDefinition.h"
 #include "IFileParser.h"
 
+#include <string>
+
 class ExportDescrBuildingsFileParser : public IFileParser {
     private:
         IBuildingRepository* buildingRepository;
@@ -15,7 +17,7 @@ class ExportDescrBuildingsFileParser : public IFileParser {
         FileDefinition* fileDefinition;
 
     public:
-        virtual void parseFile() override;
+        virtual void parseFile(std::string filePath) override;
 
     public:
         ExportDescrBuildingsFileParser() {};
