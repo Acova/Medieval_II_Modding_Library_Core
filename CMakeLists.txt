@@ -9,7 +9,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)
 add_library(sqlite STATIC inc/sqlite/sqlite3.c)
-include_directories(BEFORE inc/sqlite src/application/ModRW/public src/domain/ModRW/public src/infrastructure/DefinitionsLoader/public)
+include_directories(BEFORE inc/sqlite src/application/ModRW/public src/domain/ModRW/public src/domain/DefinitionsLoader/public src/infrastructure/DefinitionsLoader/public)
 
 add_executable(miimlc main.cpp)
 add_subdirectory(src/)

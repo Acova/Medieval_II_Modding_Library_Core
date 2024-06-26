@@ -3,6 +3,7 @@
 
 #include "FileDefinition.h"
 #include "FileEntryDefinition.h"
+#include "FileSectionDefinition.h"
 #include "sqlite3.h"
 #include <string>
 #include <map>

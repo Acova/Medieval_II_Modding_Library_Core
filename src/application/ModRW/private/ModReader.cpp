@@ -4,9 +4,8 @@
 #include "BuildingRepository.h"
 #include "BuildingLevelRepository.h"
 #include "HiddenResourceRepository.h"
+#include "ExportDescrBuildingsFileParser.h"
 #include "ModReader.h"
-
-#include <iostream>
 
 ModReader::ModReader(std::string fileDefinitionsDbPath) 
 {
@@ -14,6 +13,11 @@ ModReader::ModReader(std::string fileDefinitionsDbPath)
     IBuildingRepository* buildingRepository = new BuildingRepository();
     IHiddenResourceRepository* hiddenResourceRepository = new HiddenResourceRepository();
     IBuildingLevelRepository* buildingLevelRepository = new BuildingLevelRepository();
+    this->fileParsers["export_descr_buildings"] = new ExportDescrBuildingsFileParser(
+        buildingRepository, 
+        buildingLevelRepository, 
+        hiddenResourceRepository
+    );
 }
 
 void ModReader::readFile()

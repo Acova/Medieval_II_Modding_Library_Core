@@ -12,3 +12,7 @@ target_include_directories(ModReader PRIVATE infrastructure/TxtRepository/public
 target_link_libraries(ModReader PRIVATE BuildingRepository)
 target_link_libraries(ModReader PRIVATE BuildingLevelRepository)
 target_link_libraries(ModReader PRIVATE HiddenResourceRepository)
+
+add_subdirectory(infrastructure/TxtFileParser)
+target_include_directories(ModReader PRIVATE infrastructure/TxtFileParser/public)
+target_link_libraries(ModReader PRIVATE ExportDescrBuildingsFileParser)

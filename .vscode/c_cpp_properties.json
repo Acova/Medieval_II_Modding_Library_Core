@@ -6,6 +6,7 @@
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/src/infrastructure/DefinitionsLoader/public",
                 "${workspaceFolder}/src/domain/ModRW/public",
+                "${workspaceFolder}/src/domain/DefinitionsLoader/public",
                 "${workspaceFolder}/inc/**",
                 "${workspaceFolder}/inc/sqlite/**",
                 "${workspaceFolder}/inc/sqlite",

@@ -1,0 +1,2 @@
+add_library(ExportDescrBuildingsFileParser STATIC private/ExportDescrBuildingsFileParser.cpp)
+target_include_directories(ExportDescrBuildingsFileParser PRIVATE public)
